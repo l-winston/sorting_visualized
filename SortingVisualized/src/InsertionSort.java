@@ -29,9 +29,9 @@ public class InsertionSort {
 				j--;
 			}
 			array[j + 1] = key;
-			SortingMain.paint(array, j, i, image, frame);
+			SortingMain.paint(array, new int[] {j}, new int[] {i}, image, frame);
 			Thread.sleep(25);
 		}
-		SortingMain.paint(array, -1, -1, image, frame);
+		SortingMain.paint(array, new int[] {-1}, new int[] {-1}, image, frame);
 	}
 }

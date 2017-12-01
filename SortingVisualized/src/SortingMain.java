@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class SortingMain {
-	public static final int N = 150;
+	public static final int N = 250;
 	public static Random random = new Random();
 	
 	public static void main(String[] args) throws InterruptedException {
@@ -53,7 +53,7 @@ public class SortingMain {
 		a[change] = helper;
 		return a;
 	}
-	public static void paint(int[] ar, int swap1, int swap2, BufferedImage image, JFrame frame) {
+	public static void paint(int[] ar, int[] red, int[] green, BufferedImage image, JFrame frame) {
 		double HeightPixelsPerNumber = image.getHeight() / ar.length;
 		double WidthPixelsPerColumn = image.getWidth() / ar.length;
 
@@ -63,12 +63,17 @@ public class SortingMain {
 				int number = (int) (j / WidthPixelsPerColumn);
 				if (j % WidthPixelsPerColumn < WidthPixelsPerColumn - 1
 						&& (image.getHeight() - i) < HeightPixelsPerNumber * ar[number]) {
-					if (number == swap1) {
-						c = new Color(255, 0, 0);
-					} else if (number == swap2) {
-						c = new Color(0, 255, 0);
-					} else {
-						c = new Color(0, 0, 0);
+					c = new Color(0, 0, 0);
+					
+					for(int reds = 0; reds < red.length; reds++){
+						if(number == red[reds]){
+							c = new Color(255, 0, 0);
+						}
+					}
+					for(int greens = 0; greens < green.length; greens++){
+						if(number == green[greens]){
+							c = new Color(0, 255, 0);
+						}
 					}
 				}
 				image.setRGB(j, i, c.getRGB());
