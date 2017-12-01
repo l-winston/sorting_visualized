@@ -19,7 +19,7 @@ public class InsertionSort {
 		this.array = array;
 	}
 
-	public static void paint(int[] ar) {
+	public static void paint(int[] ar, int swap1, int swap2) {
 		double HeightPixelsPerNumber = image.getHeight() / ar.length;
 		double WidthPixelsPerColumn = image.getWidth() / ar.length;
 
@@ -29,7 +29,14 @@ public class InsertionSort {
 				if (j % WidthPixelsPerColumn < WidthPixelsPerColumn - 1) {
 					int number = (int) (j / WidthPixelsPerColumn);
 					if ((image.getHeight() - i) < HeightPixelsPerNumber * ar[number]) {
-						image.setRGB(j, i, new Color(0, 0, 0).getRGB());
+						Color c = new Color (0,0,0);
+						if(number == swap1){
+							c = new Color(255, 0, 0);
+						}
+						if(number == swap2){
+							c = new Color(0, 255, 0);
+						}
+						image.setRGB(j, i, c.getRGB());
 					}
 				}
 			}
@@ -52,9 +59,8 @@ public class InsertionSort {
 				j--;
 			}
 			array[j + 1] = key;
-			paint(array);
-			Thread.sleep(10);
+			paint(array, j, i);
+			Thread.sleep(25);
 		}
-		paint(array);
 	}
 }

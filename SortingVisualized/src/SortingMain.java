@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class SortingMain {
-	public static final int N = 250;
+	public static final int N = 150;
 
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Sorting Visualized");
