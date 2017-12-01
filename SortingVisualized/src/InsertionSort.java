@@ -19,35 +19,6 @@ public class InsertionSort {
 		this.array = array;
 	}
 
-	public static void paint(int[] ar, int swap1, int swap2) {
-		double HeightPixelsPerNumber = image.getHeight() / ar.length;
-		double WidthPixelsPerColumn = image.getWidth() / ar.length;
-
-		for (int i = image.getHeight() - 1; i >= 0; i--) {
-			for (int j = 0; j < image.getWidth(); j++) {
-				Color c = new Color(255, 255, 255);
-				int number = (int) (j / WidthPixelsPerColumn);
-				if (j % WidthPixelsPerColumn < WidthPixelsPerColumn - 1
-						&& (image.getHeight() - i) < HeightPixelsPerNumber * ar[number]) {
-					if (number == swap1) {
-						c = new Color(255, 0, 0);
-					} else if (number == swap2) {
-						c = new Color(0, 255, 0);
-					} else {
-						c = new Color(0, 0, 0);
-					}
-				}
-				image.setRGB(j, i, c.getRGB());
-			}
-		}
-
-		frame.invalidate();
-		frame.validate();
-		// frame.getContentPane().add(new JLabel(new ImageIcon(image)));
-		frame.pack();
-		frame.repaint();
-	}
-
 	public static void run() throws InterruptedException {
 		// start at 1, 0 starts in right place
 		for (int i = 1; i < array.length; i++) {
@@ -58,9 +29,9 @@ public class InsertionSort {
 				j--;
 			}
 			array[j + 1] = key;
-			paint(array, j, i);
+			SortingMain.paint(array, j, i, image, frame);
 			Thread.sleep(25);
 		}
-		paint(array, -1, -1);
+		SortingMain.paint(array, -1, -1, image, frame);
 	}
 }
