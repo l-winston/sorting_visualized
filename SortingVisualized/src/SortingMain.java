@@ -67,19 +67,22 @@ public class SortingMain {
 
 	public static void draw(int[] ar, int[] red, int[] green, BufferedImage image, JFrame frame)
 			throws InterruptedException {
-		int imageWidth = image.getWidth() - (image.getWidth() % ar.length);
-		int imageHeight = image.getHeight() - (image.getHeight() % ar.length);
+		int modHeight = image.getHeight() % ar.length;
+		int modWidth = image.getWidth() % ar.length;
+		
+		int imageWidth = image.getWidth() - modWidth;
+		int imageHeight = image.getHeight() - modHeight;
 		int HeightPixelsPerNumber = imageHeight / ar.length;
 		int WidthPixelsPerColumn = imageWidth / ar.length;
-
+		
 		setBlack(image);
 
-		for (int i = image.getHeight() - 1; i >= image.getHeight() % ar.length; i--) {
+		for (int i = image.getHeight() - 1; i >= modHeight; i--) {
 			for (int j = 0; j < imageWidth; j++) {
 				Color c = new Color(0, 0, 0);
 				int number = j / WidthPixelsPerColumn;
 				if (j % WidthPixelsPerColumn < WidthPixelsPerColumn
-						&& (imageHeight - i) < HeightPixelsPerNumber * ar[number] - (image.getHeight() % ar.length)) {
+						&& (imageHeight - i) < HeightPixelsPerNumber * ar[number] - (modHeight)) {
 					c = new Color(255, 255, 255);
 
 					for (int reds = 0; reds < red.length; reds++) {
