@@ -1,12 +1,6 @@
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 public class InsertionSort {
 	public static JFrame frame;
@@ -29,9 +23,9 @@ public class InsertionSort {
 				j--;
 			}
 			array[j + 1] = key;
-			SortingMain.paint(array, new int[] {j}, new int[] {i}, image, frame);
-			Thread.sleep(25);
+			System.out.println(j);
+			SortingMain.draw(array, new int[] {j+1}, new int[] {i}, image, frame);
 		}
-		SortingMain.paint(array, new int[] {-1}, new int[] {-1}, image, frame);
+		SortingMain.draw(array, new int[] {-1}, new int[] {-1}, image, frame);
 	}
 }
