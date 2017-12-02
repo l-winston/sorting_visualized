@@ -74,7 +74,7 @@ public class SortingMain {
 
 		setBlack(image);
 
-		for (int i = imageHeight - 1; i >= 0; i--) {
+		for (int i = image.getHeight() - 1; i >= image.getHeight() % ar.length; i--) {
 			for (int j = 0; j < imageWidth; j++) {
 				Color c = new Color(0, 0, 0);
 				int number = j / WidthPixelsPerColumn;
