@@ -24,8 +24,8 @@ public class InsertionSort {
 			}
 			array[j + 1] = key;
 			System.out.println(j);
-			SortingMain.draw(array, new int[] {j+1}, new int[] {i}, image, frame);
+			SortingMain.draw(new int[] {j+1}, new int[] {i});
 		}
-		SortingMain.draw(array, new int[] {-1}, new int[] {-1}, image, frame);
+		SortingMain.draw(new int[] {-1}, new int[] {-1});
 	}
 }

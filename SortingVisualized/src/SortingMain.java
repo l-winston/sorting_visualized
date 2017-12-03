@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.sound.midi.MidiUnavailableException;
@@ -10,21 +11,20 @@ import javax.swing.JLabel;
 
 public class SortingMain {
 	public static final int N = 17;
+	public static int[] array = new int[N];
 	public static Random random = new Random();
 	public static final int IMAGE_WIDTH = 300;
 	public static final int IMAGE_HEIGHT = 600;
+	public static JFrame frame = new JFrame("Sorting Visualized");
+	public static BufferedImage image = new BufferedImage(IMAGE_WIDTH, IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 	public static void main(String[] args)
 			throws InterruptedException, LineUnavailableException, MidiUnavailableException {
-		JFrame frame = new JFrame("Sorting Visualized");
-		BufferedImage image = new BufferedImage(IMAGE_WIDTH, IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
-
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// exit when frame
 		frame.pack();
 		frame.getContentPane().add(new JLabel(new ImageIcon(image)));
 
-		int[] array = new int[N];
 		randomize(array);
 
 		for (int i = 0; i < image.getHeight(); i++) {
@@ -65,16 +65,15 @@ public class SortingMain {
 		return a;
 	}
 
-	public static void draw(int[] ar, int[] red, int[] green, BufferedImage image, JFrame frame)
-			throws InterruptedException {
-		int modHeight = image.getHeight() % ar.length;
-		int modWidth = image.getWidth() % ar.length;
-		
+	public static void draw(int[] red, int[] green) throws InterruptedException {
+		int modHeight = image.getHeight() % array.length;
+		int modWidth = image.getWidth() % array.length;
+
 		int imageWidth = image.getWidth() - modWidth;
 		int imageHeight = image.getHeight() - modHeight;
-		int HeightPixelsPerNumber = imageHeight / ar.length;
-		int WidthPixelsPerColumn = imageWidth / ar.length;
-		
+		int HeightPixelsPerNumber = imageHeight / array.length;
+		int WidthPixelsPerColumn = imageWidth / array.length;
+
 		setBlack(image);
 
 		for (int i = image.getHeight() - 1; i >= modHeight; i--) {
@@ -82,7 +81,7 @@ public class SortingMain {
 				Color c = new Color(0, 0, 0);
 				int number = j / WidthPixelsPerColumn;
 				if (j % WidthPixelsPerColumn < WidthPixelsPerColumn
-						&& (imageHeight - i) < HeightPixelsPerNumber * ar[number] - (modHeight)) {
+						&& (imageHeight - i) < HeightPixelsPerNumber * array[number] - (modHeight)) {
 					c = new Color(255, 255, 255);
 
 					for (int reds = 0; reds < red.length; reds++) {

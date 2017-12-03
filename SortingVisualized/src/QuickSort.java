@@ -15,9 +15,9 @@ public class QuickSort {
 	}
 	public static void run() throws InterruptedException {
 		// start at 1, 0 starts in right place
-		sort(array[array.length-1], array);
+		sort(array[array.length-1], array, 0, array.length-1);
 	}
-	public static void sort(int pivot, int[] ar){
+	public static void sort(int pivot, int[] ar, int start, int end){
 		if(ar.length == 2){
 			return;
 		}
@@ -48,8 +48,8 @@ public class QuickSort {
 				len2++;
 			}
 		}
-		sort(l1[l1.length-1], l1);
+		sort(l1[l1.length-1], l1, start, start+len1);
 		System.out.println(Arrays.toString(l2));
-		sort(l2[l2.length-1], l2);
+		sort(l2[l2.length-1], l2, start+len1, end);
 	}
 }

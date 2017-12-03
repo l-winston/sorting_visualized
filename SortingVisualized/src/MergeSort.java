@@ -16,7 +16,7 @@ class MergeSort {
 
 	public static void run() throws InterruptedException {
 		sort(0, array.length - 1);
-		SortingMain.draw(array, new int[] {-1}, new int[] {-1}, image, frame);
+		SortingMain.draw(new int[] {-1}, new int[] {-1});
 	}
 
 	static void merge(int l, int m, int r) throws InterruptedException {
@@ -50,7 +50,7 @@ class MergeSort {
 				j++;
 			}
 			k++;
-			SortingMain.draw(array, new int[] {-1}, new int[] {k}, image, frame);
+			SortingMain.draw(new int[] {-1}, new int[] {k});
 		}
 
 		/* Copy remaining elements of L[] if any */
