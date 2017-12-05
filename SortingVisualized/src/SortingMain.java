@@ -10,11 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class SortingMain {
-	public static final int N = 17;
+	public static final int N = 500;
 	public static int[] array = new int[N];
 	public static Random random = new Random();
-	public static final int IMAGE_WIDTH = 300;
-	public static final int IMAGE_HEIGHT = 600;
+	public static final int IMAGE_WIDTH = 1000;
+	public static final int IMAGE_HEIGHT = 750;
 	public static JFrame frame = new JFrame("Sorting Visualized");
 	public static BufferedImage image = new BufferedImage(IMAGE_WIDTH, IMAGE_HEIGHT, BufferedImage.TYPE_INT_RGB);
 
@@ -33,15 +33,15 @@ public class SortingMain {
 			}
 		}
 
-		new InsertionSort(frame, image, array).run();
+		//new InsertionSort(frame, image, array).run();
 
 		randomize(array);
 
-		new MergeSort(frame, image, array).run();
+		//new MergeSort(frame, image, array).run();
 
 		randomize(array);
 
-		// new QuickSort(frame, image, array).run();
+		new QuickSort(frame, image, array).run();
 
 	}
 
@@ -107,7 +107,7 @@ public class SortingMain {
 		frame.pack();
 		frame.repaint();
 
-		// Synthesizer synth = MidiSystem.getSynthesizer();
+		// Synthesizer synth = MidigetSynthesizer();
 		// synth.open();
 		// final MidiChannel[] mc = synth.getChannels();
 		// Instrument[] instr = synth.getDefaultSoundbank().getInstruments();

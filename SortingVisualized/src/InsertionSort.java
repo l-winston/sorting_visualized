@@ -23,7 +23,6 @@ public class InsertionSort {
 				j--;
 			}
 			array[j + 1] = key;
-			System.out.println(j);
 			SortingMain.draw(new int[] {j+1}, new int[] {i});
 		}
 		SortingMain.draw(new int[] {-1}, new int[] {-1});
